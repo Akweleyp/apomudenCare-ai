@@ -58,7 +58,7 @@ export const addMedication = async (req, res) => {
 };
 
 
-// View or get all listings using the search and filter
+// View or get all medications using the search and filter
 
 export const getMedication = async (req, res) => {
   try {
@@ -73,7 +73,7 @@ export const getMedication = async (req, res) => {
     }
 
     return res.json({
-      message: "Here are your symptoms",
+      message: "Here are your medications",
       data: result,
     });
   } catch (error) {
@@ -98,7 +98,7 @@ export const medicationsByUser = async (req, res) => {
       return res.status(404).json({ message: "No medication found" });
     }
     res.json({
-      message: "Here are the medications",
+      message: "Here are your medications",
       data: result,
     });
   } catch (error) {
@@ -134,7 +134,7 @@ export const getOneMedication = async (req, res) => {
   }
 };
 
-//  Update/Patch listing
+//  Update/Patch medication
 
 export const updateMedication = async (req, res) => {
   try {
@@ -189,7 +189,7 @@ export const updateMedication = async (req, res) => {
   }
 };
 
-// Put/ Replace Listing
+// Put/ Replace med
 export const replaceMedication = async (req, res) => {
   try {
     const { error, value } = medicationValidator.validate(req.params, {
@@ -228,7 +228,7 @@ export const replaceMedication = async (req, res) => {
   }
 };
 
-// Delete symptom
+// Delete medication
 
 export const deleteMedication = async (req, res) => {
   try {

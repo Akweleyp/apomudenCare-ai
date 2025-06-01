@@ -9,7 +9,7 @@ const symptomRouter = Router();
 // Define routes
 
 // Add symptom
-symptomRouter.post("/symptoms/submit",  isAuthenticated,isAuthorized(["patient", "doctor"]) ,addSymptom);
+symptomRouter.post("/symptoms/submit",  isAuthenticated, isAuthorized(["patient", "doctor"]) , addSymptom);
 
 // Get all symptoms
 symptomRouter.get("/symptoms", getSymptoms);
@@ -23,7 +23,7 @@ symptomRouter.put("/symptoms/:id", isAuthenticated, isAuthorized(["doctor", "adm
 
 
 // Get symtom by id
-symptomRouter.get("/symptoms/:id", isAuthenticated, isAuthorized(["doctor", "admin"]), getOneSymptom);
+symptomRouter.get("/symptoms/:id", getOneSymptom);
 
 // Delete symptom
 symptomRouter.delete("/symptom/:id", isAuthenticated, isAuthorized(["doctor", "admin"]), deleteSymptom)

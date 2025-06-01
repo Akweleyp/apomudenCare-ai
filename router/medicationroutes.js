@@ -9,7 +9,7 @@ const medicationRouter = Router();
 // Define routes
 
 // Add symptom
-medicationRouter.post("/medications/info", addMedication);
+medicationRouter.post("/medications/info",  isAuthenticated, isAuthorized(["nurse", "doctor"]) , addMedication);
 
 // Get all symptoms
 medicationRouter.get("/medications/info", getMedication);
