@@ -1,25 +1,25 @@
 import Joi from "joi";
 
 export const registerUserValidator = Joi.object({
+  username: Joi.string().required(),
   firstName: Joi.string()
     .regex(/^[A-Za-z]+$/)
     .required(),
   lastName: Joi.string()
     .regex(/^[A-Za-z]+$/)
     .required(),
-    telephoneNumber: Joi.number().required(),
+    telephoneNumber: Joi.string().required(),
     
   email: Joi.string().email({ tlds: { allow: ['com', 'org', 'net'] } }).required(),
   password: Joi.string().required(),
+  confirmPassword: Joi.string().valid(Joi.ref("password")),
 
 //   upload profile picture 
    profilePicture: Joi.string()
-    .pattern(imageExtensionRegex)
-    .uri({ allowRelative: true }) // allows both URLs and file paths like 'uploads/user1.jpg'
-    .required(),
-
-
-  confirmPassword: Joi.string().valid(Joi.ref("password")),
+  .pattern(/\.(jpg|jpeg|png|gif)$/i)
+  .uri({ allowRelative: true })
+  .optional(),
+    specialty: Joi.string().required(),
 
   // role is optional, it is set to default user if it is not indicated or selected.
   role: Joi.string().valid("patient", "nurse", "doctor").optional(),
@@ -31,6 +31,7 @@ export const loginUserValidator = Joi.object({
 });
 
 export const updateUserValidator = Joi.object({
+  username: Joi.string().optional(),
   firstName: Joi.string()
     .regex(/^[A-Za-z]+$/)
     .optional(),
@@ -41,9 +42,10 @@ export const updateUserValidator = Joi.object({
   password: Joi.string().optional(),
   confirmPassword: Joi.string().optional(),
   role: Joi.string().valid("patient", "nurse","doctor"),
-  telephoneNumber: Joi.number().optional(),
+  telephoneNumber: Joi.string().optional(),
    profilePicture: Joi.string()
-    .pattern(imageExtensionRegex)
-    .uri({ allowRelative: true }) // allows both URLs and file paths like 'uploads/user1.jpg'
-    .optional()
+  .pattern(/\.(jpg|jpeg|png|gif)$/i)
+  .uri({ allowRelative: true })
+  .optional(),
+    specialty: Joi.string().optional(),
 });

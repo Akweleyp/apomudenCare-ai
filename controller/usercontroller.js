@@ -1,5 +1,5 @@
 import { UserModel } from "../model/usermodel.js";
-import { mailTransporter } from "../utils/mail.js";
+// import { emailMessage, mailTransporter } from "../utils/mail.js";
 import {
   loginUserValidator,
   registerUserValidator,
@@ -11,6 +11,8 @@ import jwt from "jsonwebtoken";
 export const registerUser = async (req, res, next) => {
   // Steps to be taken
   // Validate user Information
+
+  console.log("Request body:", req.body);
   const { error, value } = registerUserValidator.validate(req.body);
   if (error) {
     return res.status(422).json(error);
@@ -33,14 +35,14 @@ export const registerUser = async (req, res, next) => {
   // Send registration email to user
 
 
-  await mailTransporter.sendMail({
-    from: process.env.USER_GMAIL,
-    to: value.email,
-    subject:'Checking  out nodemiler ',
-    // text: ` Dear ${value.username}, \nA  new account has been created for you! \nThank you!`
-    html: registerUserTemplate.replace("{{username}}", value.username),
+  // await mailTransporter.sendMail({
+  //   from: process.env.USER_GMAIL,
+  //   to: value.email,
+  //   subject:'Checking  out nodemiler ',
+  //   // text: ` Dear ${value.username}, \nA  new account has been created for you! \nThank you!`
+  //   html: emailMessage.replace("{{lastName}}", value.lastName),
 
-  })
+  // })
   //(optionally) Generate access token for user
   // Return response
   res.status(201).json("User registered successfully!");
@@ -89,4 +91,16 @@ export const updateUser = async (req, res, next) => {
 
   // Return response
   res.status(200).json('User successfully update');
+};
+
+
+// Get all users
+
+export const getAllUsers = async (req, res) => {
+  try {
+    const users = await UserModel.find();
+     return res.json(users);
+  } catch (error) {
+     return res.json({ message: "Unable to get users" });
+  }
 };

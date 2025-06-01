@@ -60,7 +60,7 @@ export const addMedication = async (req, res) => {
 
 // View or get all listings using the search and filter
 
-export const getmedication = async (req, res) => {
+export const getMedication = async (req, res) => {
   try {
     const { filter = "{}", sort = "{}" } = req.query;
 
@@ -84,7 +84,7 @@ export const getmedication = async (req, res) => {
   }
 };
 
-export const symptomsByUser = async (req, res) => {
+export const medicationsByUser = async (req, res) => {
   try {
     const { filter = "{}", sort = "{}" } = req.query;
 
@@ -111,7 +111,7 @@ export const symptomsByUser = async (req, res) => {
 
 //  Get one Medication  or Get medication by ID
 
-export const getOneSymptom = async (req, res) => {
+export const getOneMedication = async (req, res) => {
   try {
     const { error, value } = medicationIdValivator.validate(req.params, {
       abortEarly: false,

@@ -6,7 +6,7 @@ export const symptomValidator =  Joi.object({
     patientName: Joi.string().required(),
     age: Joi.number().required(),
     symptoms: Joi.string().required(),
-    specialty: Joi.string().required(),
+  
     pictures:Joi.array().items(Joi.string().required()),
     
 
@@ -19,7 +19,7 @@ export const updateSymptomValidator = Joi.object({
     age: Joi.number().optional(),
     symptoms: Joi.string().optional(),
     pictures:Joi.array().items(Joi.string().required()),
-    specialty: Joi.string().required(),
+    // specialty: Joi.string().required(),
     
 });
 
