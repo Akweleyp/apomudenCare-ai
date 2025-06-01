@@ -4,7 +4,7 @@ import { Schema, model, Types } from "mongoose";
 import normalize from "normalize-mongoose";
 
 const symptomsSchema = new Schema({
-    username: { type: String, required: true, unique: true },
+    area: { type: String, required: true },
     age: {type: Number, required: true},
     symptoms: {
     type: String, // Patient writes something like "Fever, cough, headache"
@@ -12,7 +12,7 @@ const symptomsSchema = new Schema({
     // pictures: [ {type: String, required: true }],
 
     // fever: {
-    //   type: Boolean,
+    //   type: Boolean,np
     //   default: false
     // },
     // cough: {
