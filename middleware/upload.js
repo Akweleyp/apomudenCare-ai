@@ -8,12 +8,24 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
-// Uploading images for listings (using multer)
+// Uploading images for symptoms (using multer)
 export const symptomPicturesUpload = multer({
   storage: new CloudinaryStorage({
     cloudinary,
     params: {
       folder: "apomudenCare-api/symptom-pictures",
+    },
+  }),
+});
+
+
+
+// Uploading images for profile pictures (using multer)
+export const profilePicturesUpload = multer({
+  storage: new CloudinaryStorage({
+    cloudinary,
+    params: {
+      folder: "apomudenCare-api/profile-pictures",
     },
   }),
 });
@@ -30,20 +42,20 @@ export const symptomPicturesUpload = multer({
 // });
 
 
-export const profilePictureUpload = multer({
-  storage: new CloudinaryStorage({
-    cloudinary,
-    params: (req, file) => ({
-      folder: "apomudenCareProfile-api/profile-pictures",
-      public_id: `${Date.now()}-${file.originalname}`,
-    }),
-  }),
-  fileFilter: (req, file, cb) => {
-    if (file.mimetype.startsWith("image/")) {
-      cb(null, true);
-    } else {
-      cb(new Error("Only image files are allowed"), false);
-    }
-  },
-  limits: { fileSize: 2 * 1024 * 1024 }, // 2MB size limit
-});
+// export const profilePictureUpload = multer({
+//   storage: new CloudinaryStorage({
+//     cloudinary,
+//     params: (req, file) => ({
+//       folder: "apomudenCareProfile-api/profile-pictures",
+//       public_id: `${Date.now()}-${file.originalname}`,
+//     }),
+//   }),
+//   fileFilter: (req, file, cb) => {
+//     if (file.mimetype.startsWith("image/")) {
+//       cb(null, true);
+//     } else {
+//       cb(new Error("Only image files are allowed"), false);
+//     }
+//   },
+//   limits: { fileSize: 2 * 1024 * 1024 }, // 2MB size limit
+// });

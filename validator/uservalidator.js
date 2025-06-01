@@ -1,7 +1,7 @@
 import Joi from "joi";
 
 export const registerUserValidator = Joi.object({
-  username: Joi.string().required(),
+ username: Joi.string().alphanum().min(3).max(30).required(),
   firstName: Joi.string()
     .regex(/^[A-Za-z]+$/)
     .required(),
@@ -19,7 +19,7 @@ export const registerUserValidator = Joi.object({
   .pattern(/\.(jpg|jpeg|png|gif)$/i)
   .uri({ allowRelative: true })
   .optional(),
-    specialty: Joi.string().required(),
+    specialty: Joi.string().optional(),
 
   // role is optional, it is set to default user if it is not indicated or selected.
   role: Joi.string().valid("patient", "nurse", "doctor").optional(),

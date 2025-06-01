@@ -7,7 +7,7 @@ export const symptomValidator =  Joi.object({
     age: Joi.number().required(),
     symptoms: Joi.string().required(),
   
-    pictures:Joi.array().items(Joi.string().required()),
+    // pictures:Joi.array().items(Joi.string().required()),
     
 
 });

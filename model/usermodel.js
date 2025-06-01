@@ -25,7 +25,7 @@ const userSchema = new Schema(
       type: String,
       default: "", // can be updated after upload
     },
-    specialty: {type:String, required: true}
+    specialty: {type:String, required: false}
 
   }, {
     timestamps: true,

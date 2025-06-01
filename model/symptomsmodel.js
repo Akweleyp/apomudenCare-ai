@@ -9,7 +9,7 @@ const symptomsSchema = new Schema({
     symptoms: {
     type: String, // Patient writes something like "Fever, cough, headache"
     required: true  },
-    pictures: [ {type: String, required: true }],
+    // pictures: [ {type: String, required: true }],
 
     // fever: {
     //   type: Boolean,
