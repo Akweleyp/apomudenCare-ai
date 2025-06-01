@@ -9,7 +9,7 @@ const symptomRouter = Router();
 // Define routes
 
 // Add symptom
-symptomRouter.post("/symptoms/submit", addSymptom);
+symptomRouter.post("/symptoms/submit",  isAuthenticated,isAuthorized(["patient", "doctor"]) ,addSymptom);
 
 // Get all symptoms
 symptomRouter.get("/symptoms", getSymptoms);

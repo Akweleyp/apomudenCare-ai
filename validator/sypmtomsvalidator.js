@@ -3,9 +3,9 @@ import Joi from "joi";
 // Create symptoms vadidator
 
 export const symptomValidator =  Joi.object({
-    patientName: Joi.string().required(),
-    age: Joi.number().required(),
-    symptoms: Joi.string().required(),
+    username: Joi.string().optional(),
+    age: Joi.number().optional(),
+    symptoms: Joi.string().optional(),
   
     // pictures:Joi.array().items(Joi.string().required()),
     
@@ -15,7 +15,7 @@ export const symptomValidator =  Joi.object({
 
 // Update symptom validator
 export const updateSymptomValidator = Joi.object({
-    patientName: Joi.string().optional(),
+    username: Joi.string().optional(),
     age: Joi.number().optional(),
     symptoms: Joi.string().optional(),
     // pictures:Joi.array().items(Joi.string().required()),

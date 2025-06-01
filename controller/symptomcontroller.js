@@ -13,7 +13,7 @@ export const addSymptom = async (req, res) => {
     const { error, value } = symptomValidator.validate(
       {
         ...req.body,
-        pictures: req.files?.map((file) => file.filename) || [],
+       
       },
       { abortEarly: false }
     );

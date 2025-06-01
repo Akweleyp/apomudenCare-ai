@@ -4,7 +4,7 @@ import { Schema, model, Types } from "mongoose";
 import normalize from "normalize-mongoose";
 
 const symptomsSchema = new Schema({
-    patientName: { type: String, required: true, unique: true },
+    username: { type: String, required: true, unique: true },
     age: {type: Number, required: true},
     symptoms: {
     type: String, // Patient writes something like "Fever, cough, headache"
