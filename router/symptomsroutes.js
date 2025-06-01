@@ -9,7 +9,7 @@ const symptomRouter = Router();
 // Define routes
 
 // Add symptom
-symptomRouter.post("/api/symptoms/submit", addSymptom);
+symptomRouter.post("/symptoms/submit", addSymptom);
 
 // Get all symptoms
 symptomRouter.get("/symptoms", getSymptoms);
